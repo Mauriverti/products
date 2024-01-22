@@ -2,9 +2,7 @@ import { useState } from 'react'
 import Field, { FieldProps } from './Field'
 import CPFValidator from '../../../user/domain/CPFValidator.interactor'
 
-interface CPFFieldProps extends FieldProps {}
-
-export default function CPFField({ ...props }: CPFFieldProps) {
+export default function CPFField({ ...props }: FieldProps) {
   const [invalid, setInvalid] = useState<string>('')
 
   const customHandleChange = (value: string) => {

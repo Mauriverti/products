@@ -1,12 +1,12 @@
 import { StandardTextFieldProps, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 export interface FieldProps extends StandardTextFieldProps {
   handleChange: (value: string) => void
 }
 
 export default function Field({ handleChange, ...props }: FieldProps) {
-  const customHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const customHandleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTouched(true)
     handleChange(e.currentTarget.value)
   }
