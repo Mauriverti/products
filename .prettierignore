@@ -4,4 +4,5 @@ src/react-app-env.d.ts
 build
 public
 package.json
+package-lock.json
 .github

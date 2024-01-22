@@ -1,10 +1,8 @@
 import Field, { FieldProps } from './Field'
 
-interface NumberFieldProps extends FieldProps {}
-
-export default function NumberField({ handleChange, ...props }: NumberFieldProps) {
+export default function NumberField({ handleChange, ...props }: FieldProps) {
   const filterNumbers = (value: string) => {
-    const allButNumberPattern: RegExp = /\D/g
+    const allButNumberPattern = /\D/g
     const sanitized = value.replace(allButNumberPattern, '')
     handleChange(sanitized)
   }

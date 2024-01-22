@@ -3,7 +3,7 @@ import BRAddress from '../../domain/models/brAddress'
 import sanityzeZipCode from './sanitizeZipCode.interactor'
 
 export default function brAddress2AddressConverter(address: BRAddress | undefined): Address {
-  let addr: Address = {
+  const addr: Address = {
     zipCode: sanityzeZipCode(address?.cep) || '',
     city: address?.localidade || '',
     state: address?.uf || '',
