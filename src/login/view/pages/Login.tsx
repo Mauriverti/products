@@ -33,7 +33,6 @@ export default function Login() {
       sendError(`${e}`)
     }
   }
-  var a = 0
 
   const useFakeCredentials = () => {
     const fakeUser: iLogin = {

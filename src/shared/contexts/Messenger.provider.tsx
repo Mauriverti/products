@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react'
+import { ReactNode, useContext, useState } from 'react'
 import MessageModal from '../view/components/MessageModal'
 import { MessengerContext, MessengerMessageType } from './Messenger.context'
 
 interface MessageProviderProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export function useMessenger() {

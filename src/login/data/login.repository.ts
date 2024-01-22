@@ -10,7 +10,7 @@ export default class LoginRepository {
     try {
       response = (await axios.get(`${api}?email=${login.email}`)).data
       return response
-    } catch (e: any) {
+    } catch (e: unknown) {
       throw Error('Email ou senha incorretos!')
     }
   }
