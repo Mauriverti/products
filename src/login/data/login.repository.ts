@@ -8,9 +8,9 @@ export default class LoginRepository {
 
     let response: APIUser[]
     try {
-      response = (await (axios.get(`${api}?email=${login.email}`))).data
+      response = (await axios.get(`${api}?email=${login.email}`)).data
       return response
-    } catch(e: any) {
+    } catch (e: any) {
       throw Error('Email ou senha incorretos!')
     }
   }

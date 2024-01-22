@@ -1,10 +1,10 @@
-import cpfValidator from '../cepValidator.interactor';
-import Address from '../models/address';
+import cpfValidator from '../cepValidator.interactor'
+import Address from '../models/address'
 
 export default class AddressService {
   static validateAddress(address: Address) {
     if (!cpfValidator(address.zipCode)) {
-      throw Error('CEP inválido!');
+      throw Error('CEP inválido!')
     }
     if (!address.city) {
       throw Error('Cidade é obrigatório!')

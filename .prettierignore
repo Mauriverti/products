@@ -1,0 +1,7 @@
+.prettierrc
+tsconfig.json
+src/react-app-env.d.ts
+build
+public
+package.json
+.github
