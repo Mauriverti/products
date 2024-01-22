@@ -14,11 +14,10 @@ interface UserFormProps {
 }
 
 export default function UserForm({ ...props }: UserFormProps) {
-
   const handleChange = (field: keyof User, value: unknown) => {
     const newValue: User = {
       ...props.value,
-      [field]: value
+      [field]: value,
     }
     props.handleChange(newValue)
   }
@@ -26,30 +25,15 @@ export default function UserForm({ ...props }: UserFormProps) {
   return (
     <>
       <div className={styles.fieldLine}>
-        <Field
-          label='Nome'
-          value={props.value.firstName}
-          handleChange={(v) => handleChange('firstName', v)}
-          required
-        />
+        <Field label='Nome' value={props.value.firstName} handleChange={(v) => handleChange('firstName', v)} required />
         <Field
           label='Sobrenome'
           value={props.value.surname}
           handleChange={(v) => handleChange('surname', v)}
           required
         />
-        <CPFField
-          label='CPF'
-          value={props.value.idNumber}
-          handleChange={(v) => handleChange('idNumber', v)}
-          required
-        />
-        <EmailField
-          label='Email'
-          value={props.value.email}
-          handleChange={(v) => handleChange('email', v)}
-          required
-        />
+        <CPFField label='CPF' value={props.value.idNumber} handleChange={(v) => handleChange('idNumber', v)} required />
+        <EmailField label='Email' value={props.value.email} handleChange={(v) => handleChange('email', v)} required />
       </div>
       <div className={styles.fieldLine}>
         <PasswordField
@@ -58,17 +42,10 @@ export default function UserForm({ ...props }: UserFormProps) {
           handleChange={(v) => handleChange('password', v)}
           required
         />
-        <GenderSelect
-          label='Sexo'
-          value={props.value.gender}
-          handleChange={(v) => handleChange('gender', v)}
-        />
-        <DatePickerField
-          value={props.value.birthDate}
-          handleChange={(v) => handleChange('birthDate', v)}
-        />
+        <GenderSelect label='Sexo' value={props.value.gender} handleChange={(v) => handleChange('gender', v)} />
+        <DatePickerField value={props.value.birthDate} handleChange={(v) => handleChange('birthDate', v)} />
       </div>
-      <AddressForm handleChange={(v) => handleChange('address', v)} value={props.value.address}/>
+      <AddressForm handleChange={(v) => handleChange('address', v)} value={props.value.address} />
     </>
   )
 }

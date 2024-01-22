@@ -2,12 +2,13 @@ import { createContext } from 'react'
 
 export type MessageType = 'info' | 'warn' | 'error' | 'success'
 
-export type MessengerMessageType = {
-  title: string
-  message: string
-  type: MessageType
-} | undefined
-
+export type MessengerMessageType =
+  | {
+      title: string
+      message: string
+      type: MessageType
+    }
+  | undefined
 
 export interface MessengerMessage {
   sendMessage: (values: MessengerMessageType) => void

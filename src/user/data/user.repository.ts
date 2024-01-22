@@ -1,14 +1,14 @@
-import axios from 'axios';
-import User from '../domain/models/user';
+import axios from 'axios'
+import User from '../domain/models/user'
 
 export default class UserRepository {
   static async create(user: User) {
-    const api = 'https://6256fc506ea7037005434e84.mockapi.io/api/v1/user';
+    const api = 'https://6256fc506ea7037005434e84.mockapi.io/api/v1/user'
     try {
-      await axios.post(api, user);
-    } catch(e: any) {
-      const message = e?.response?.data || 'Erro ao criar usuário';
-      throw Error(message);
+      await axios.post(api, user)
+    } catch (e: any) {
+      const message = e?.response?.data || 'Erro ao criar usuário'
+      throw Error(message)
     }
   }
 }

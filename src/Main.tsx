@@ -6,7 +6,6 @@ import { router } from './Routes'
 import MessageProvider from './shared/contexts/Messenger.provider'
 
 export default function Main() {
-
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className={styles.container}>

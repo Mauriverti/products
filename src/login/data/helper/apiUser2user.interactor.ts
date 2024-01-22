@@ -1,6 +1,6 @@
-import Address from '../../../user/domain/models/address';
-import APIUser from '../../../user/domain/models/apiUser';
-import User from '../../../user/domain/models/user';
+import Address from '../../../user/domain/models/address'
+import APIUser from '../../../user/domain/models/apiUser'
+import User from '../../../user/domain/models/user'
 
 export default function apiUser2UserInteractor(apiUser: APIUser): User {
   const address: Address = {
@@ -9,7 +9,7 @@ export default function apiUser2UserInteractor(apiUser: APIUser): User {
     state: apiUser.estado,
     addressLine1: apiUser.logradouro,
     addressLine2: `${apiUser.complemento}`,
-    neighborhood: apiUser.bairro
+    neighborhood: apiUser.bairro,
   }
 
   const user: User = {
@@ -24,5 +24,5 @@ export default function apiUser2UserInteractor(apiUser: APIUser): User {
     address,
   }
 
-  return user;
+  return user
 }

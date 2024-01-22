@@ -10,7 +10,6 @@ import UserService from '../../domain/services/user.service'
 import { MessengerContext } from '../../../shared/contexts/Messenger.context'
 
 export default function UserCreate() {
-
   const defaultUserValue: User = {
     firstName: '',
     surname: '',
@@ -36,7 +35,7 @@ export default function UserCreate() {
     try {
       await UserService.create(user)
       sendSuccess('Usuário criado com sucesso!')
-    } catch(e) {
+    } catch (e) {
       sendError(`${e}`)
     }
   }
@@ -44,10 +43,14 @@ export default function UserCreate() {
   return (
     <Card className={styles.container}>
       <h2>Criar Usuário</h2>
-      <UserForm  handleChange={setUser} value={user} />
+      <UserForm handleChange={setUser} value={user} />
       <div className={styles.spacer}>
-        <Button variant='contained' onClick={handleGoBack}>Voltar</Button>
-        <Button variant='contained' onClick={() => handleData(user)}>Criar Usuário</Button>
+        <Button variant='contained' onClick={handleGoBack}>
+          Voltar
+        </Button>
+        <Button variant='contained' onClick={() => handleData(user)}>
+          Criar Usuário
+        </Button>
       </div>
     </Card>
   )

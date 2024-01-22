@@ -9,7 +9,7 @@ export default function brAddress2AddressConverter(address: BRAddress | undefine
     state: address?.uf || '',
     addressLine1: address?.logradouro || '',
     addressLine2: address?.complemento || '',
-    neighborhood: address?.bairro || ''
+    neighborhood: address?.bairro || '',
   }
   return addr
 }
