@@ -1,4 +1,4 @@
-import { createBrowserRouter, redirect } from 'react-router-dom';
+import { createBrowserRouter, redirect } from 'react-router-dom'
 import UserCreate from './user/view/pages/UserCreate'
 import Login from './login/view/pages/Login'
 
