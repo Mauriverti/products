@@ -18,37 +18,37 @@ export default function MessageProvider({ ...props }: MessageProviderProps) {
     setMessage(values)
   }
 
-  const sendInfo = (message: string) => {
+  const sendInfo = (_message: string) => {
     const infoMessage: MessengerMessageType = {
       type: 'info',
-      message,
+      message: _message,
       title: 'Info',
     }
     sendMessage(infoMessage)
   }
 
-  const sendWarning = (message: string) => {
+  const sendWarning = (_message: string) => {
     const warningMessage: MessengerMessageType = {
       type: 'warn',
-      message,
+      message: _message,
       title: 'Aviso',
     }
     sendMessage(warningMessage)
   }
 
-  const sendError = (message: string) => {
+  const sendError = (_message: string) => {
     const errorMessage: MessengerMessageType = {
       type: 'error',
-      message,
+      message: _message,
       title: 'Erro',
     }
     sendMessage(errorMessage)
   }
 
-  const sendSuccess = (message: string) => {
+  const sendSuccess = (_message: string) => {
     const errorMessage: MessengerMessageType = {
       type: 'success',
-      message,
+      message: _message,
       title: 'Sucesso!',
     }
     sendMessage(errorMessage)

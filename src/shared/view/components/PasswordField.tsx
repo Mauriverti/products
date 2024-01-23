@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, MouseEvent } from 'react'
 import Field, { FieldProps } from './Field'
 import { IconButton, InputAdornment } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
@@ -9,7 +9,7 @@ export default function PasswordField({ handleChange, ...props }: PasswordFieldP
   const [showPassword, setShowPassword] = useState(false)
   const handleClickShowPassword = () => setShowPassword((show) => !show)
 
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
   }
 
