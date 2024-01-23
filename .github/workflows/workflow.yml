@@ -4,12 +4,12 @@ jobs:
   validate-prettier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: npm run prettier
+      - uses: actions/checkout@v4
+      - run: npm ci && npm run prettier
   
-  # validate-eslint:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - run:
-  #         npm run eslint
+  validate-eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run:
+          npm ci && npm run eslint
