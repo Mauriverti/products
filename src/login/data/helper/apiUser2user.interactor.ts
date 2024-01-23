@@ -14,13 +14,14 @@ export default function apiUser2UserInteractor(apiUser: APIUser): User {
 
   const user: User = {
     firstName: apiUser.nome,
-    surname: apiUser.sobrenome,
+    lastName: apiUser.sobrenome,
     idNumber: `${apiUser.cpf}`,
     email: apiUser.email,
     password: apiUser.senha,
     gender: apiUser.sexo,
     birthDate: new Date(apiUser.dt_nascimento),
     token: apiUser.token,
+    avatar: apiUser.image,
     address,
   }
 

@@ -12,7 +12,7 @@ import { MessengerContext } from '../../../shared/contexts/Messenger.context'
 export default function UserCreate() {
   const defaultUserValue: User = {
     firstName: '',
-    surname: '',
+    lastName: '',
     idNumber: '',
     email: '',
     password: '',
@@ -31,9 +31,9 @@ export default function UserCreate() {
 
   const { sendError, sendSuccess } = useContext(MessengerContext)
 
-  const handleData = async (user: User) => {
+  const handleData = async (_user: User) => {
     try {
-      await UserService.create(user)
+      await UserService.create(_user)
       sendSuccess('Usuário criado com sucesso!')
     } catch (e) {
       sendError(`${e}`)

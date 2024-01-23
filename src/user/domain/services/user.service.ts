@@ -15,7 +15,7 @@ export default class UserService {
     if (!user.firstName) {
       throw Error('Nome do usuário é obrigatório!')
     }
-    if (!user.surname) {
+    if (!user.lastName) {
       throw Error('Sobrenome do usuário é obrigatório!')
     }
     if (!CPFValidator(user.idNumber)) {

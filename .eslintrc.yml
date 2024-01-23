@@ -23,6 +23,8 @@ settings:
         - .jsx
         - .ts
         - .tsx
+ignorePatterns:
+  - '**/*.sass'
 rules:
   indent:
     - error
@@ -56,3 +58,7 @@ rules:
     - off
   '@typescript-eslint/no-shadow':
     - error
+  i18n-text/no-en:
+    - off
+  no-console:
+    - warn
