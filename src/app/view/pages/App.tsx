@@ -15,7 +15,7 @@ export default function App() {
     navigate(routes.LOGIN)
   }
 
-  console.log('user?', getUser())
+  // console.log('user?', getUser())
   if (!getUser()) {
     toLogin()
   }
