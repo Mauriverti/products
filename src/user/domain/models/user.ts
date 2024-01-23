@@ -2,7 +2,7 @@ import Address from './address'
 
 export default interface User {
   firstName: string
-  surname: string
+  lastName: string
   idNumber: string
   email: string
   password: string
@@ -10,4 +10,5 @@ export default interface User {
   birthDate?: Date
   address: Address
   token?: string
+  avatar?: string
 }

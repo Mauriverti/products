@@ -6,6 +6,7 @@ extends:
   - plugin:@typescript-eslint/recommended
   - plugin:react/recommended
   - plugin:github/recommended
+  - prettier
 parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaVersion: latest
@@ -23,10 +24,13 @@ settings:
         - .jsx
         - .ts
         - .tsx
+ignorePatterns:
+  - '**/*.sass'
 rules:
   indent:
     - error
     - 2
+    - SwitchCase: 1
   linebreak-style:
     - error
     - unix
@@ -56,3 +60,7 @@ rules:
     - off
   '@typescript-eslint/no-shadow':
     - error
+  i18n-text/no-en:
+    - off
+  no-console:
+    - warn

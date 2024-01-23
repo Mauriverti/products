@@ -28,8 +28,8 @@ export default function UserForm({ ...props }: UserFormProps) {
         <Field label='Nome' value={props.value.firstName} handleChange={(v) => handleChange('firstName', v)} required />
         <Field
           label='Sobrenome'
-          value={props.value.surname}
-          handleChange={(v) => handleChange('surname', v)}
+          value={props.value.lastName}
+          handleChange={(v) => handleChange('lastName', v)}
           required
         />
         <CPFField label='CPF' value={props.value.idNumber} handleChange={(v) => handleChange('idNumber', v)} required />
