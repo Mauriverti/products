@@ -8,12 +8,7 @@ interface MoneyFieldProps extends OutlinedInputProps {
 
 export default function MoneyField(props: MoneyFieldProps) {
   const [touched, setTouched] = useState<boolean>(false)
-
-  const error = touched && !numberValidator(`${props.value}`) //|| (touched && props.required && props.value === '')
-  console.log('error', error)
-  console.log('touched', touched)
-  console.log('required', props.required && props.value === '')
-  console.log('!validator', props.value, !numberValidator(`${props.value}`))
+  const error = (touched && !numberValidator(`${props.value}`)) || (touched && props.required && props.value === '')
 
   const customHandleChange = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setTouched(true)

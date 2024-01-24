@@ -10,9 +10,7 @@ export default function ProductCreate() {
   const { id } = useParams()
   const [product, setProduct] = useState<Product>({})
 
-  const onSubmit = () => {
-    console.log('submit', product)
-  }
+  const onSubmit = () => {}
 
   return (
     <PageWrapper>

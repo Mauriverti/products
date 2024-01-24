@@ -28,7 +28,7 @@ export default function ProductView() {
   if (loading) return <CircularProgress />
 
   const onDelete = () => {
-    sendWarning('Tem certeza que deseja deletar esse registro?', () => console.log('confirmou'))
+    sendWarning('Tem certeza que deseja deletar esse registro?')
   }
 
   const onEdit = () => {
