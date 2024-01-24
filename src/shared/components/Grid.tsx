@@ -1,7 +1,7 @@
 import EditIcon from '@mui/icons-material/Edit'
 import { Avatar, IconButton, LinearProgress, Tooltip } from '@mui/material'
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
-import Product from '../../../product/domain/models/product'
+import Product from '../../product/domain/models/product'
 import styles from './Grid.module.sass'
 
 interface GridProps {
@@ -16,7 +16,7 @@ export default function Grid(props: GridProps) {
       headerName: 'Avatar',
       width: 100,
       renderCell: (params) => {
-        return <Avatar src={params.value.avatar} />
+        return <Avatar src={params.row.avatar} />
       },
     },
     {

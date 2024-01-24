@@ -1,4 +1,4 @@
-import cpfValidator from '../cepValidator.interactor'
+import cpfValidator from '../cep.validator'
 import Address from '../models/address'
 
 export default class AddressService {

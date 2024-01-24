@@ -1,6 +1,6 @@
 import styles from './MessageModal.module.sass'
 import { Button } from '@mui/material'
-import { MessageType } from '../../contexts/Messenger.context'
+import { MessageType } from '../contexts/Messenger.context'
 
 export interface MessageModalProps {
   type: MessageType

@@ -1,7 +1,7 @@
 import UserRepository from '../../data/user.repository'
-import CPFValidator from '../CPFValidator.interactor'
-import birthDateValidator from '../birthDateValidator.interactor'
-import emailValidator from '../emailValidator.interactor'
+import CPFValidator from '../cpf.validator'
+import birthDateValidator from '../birthDate.validator'
+import emailValidator from '../email.validator'
 import User from '../models/user'
 import AddressService from './address.service'
 

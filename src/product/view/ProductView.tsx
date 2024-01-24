@@ -2,9 +2,9 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import { Avatar, CircularProgress, IconButton, Tooltip, Typography } from '@mui/material'
 import dayjs from 'dayjs'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useMessenger } from '../../shared/contexts/Messenger.provider'
-import PageWrapper from '../../shared/view/components/PageWrapper'
+import PageWrapper from '../../shared/components/PageWrapper'
 import useProductAPI from '../data/useProductAPI.hook'
 import styles from './ProductView.module.sass'
 
@@ -23,6 +23,7 @@ export default function ProductView() {
   const { id } = useParams()
   const { products, loading } = useProductAPI({ id })
   const { sendWarning } = useMessenger()
+  const navigate = useNavigate()
 
   if (loading) return <CircularProgress />
 
@@ -31,7 +32,7 @@ export default function ProductView() {
   }
 
   const onEdit = () => {
-    console.log('edit')
+    navigate('./edit')
   }
 
   return (

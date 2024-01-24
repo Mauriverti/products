@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { routes } from '../../../Routes'
-import emailValidator from '../../../user/domain/emailValidator.interactor'
+import emailValidator from '../../../user/domain/email.validator'
 import User from '../../../user/domain/models/user'
 import loginGateway from '../../data/login.gateway'
 import iLogin from '../models/Login'

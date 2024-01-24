@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Field, { FieldProps } from './Field'
-import emailValidator from '../../../user/domain/emailValidator.interactor'
+import emailValidator from '../../user/domain/email.validator'
 
 interface EmailFieldProps extends FieldProps {}
 

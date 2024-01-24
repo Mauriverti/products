@@ -1,5 +1,5 @@
 import { ReactNode, useContext, useState } from 'react'
-import MessageModal from '../view/components/MessageModal'
+import MessageModal from '../components/MessageModal'
 import { MessengerContext, MessengerMessageType } from './Messenger.context'
 
 interface MessageProviderProps {

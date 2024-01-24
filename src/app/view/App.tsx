@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
-import Header from '../../shared/view/components/Header'
-import SideNav from '../../shared/view/components/SideNav'
+import Header from '../../shared/components/Header'
+import SideNav from '../../shared/components/SideNav'
 import styles from './App.module.sass'
 
 export default function App() {
@@ -14,7 +14,7 @@ export default function App() {
   return (
     <div className={styles.container}>
       <Header onMenuClick={toggleDrawer} />
-      <div>
+      <div className={styles.row}>
         <SideNav isOpened={isSideNavOpened} />
         <Outlet />
       </div>

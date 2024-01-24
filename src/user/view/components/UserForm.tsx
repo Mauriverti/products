@@ -1,9 +1,9 @@
-import CPFField from '../../../shared/view/components/CPFField'
-import DatePickerField from '../../../shared/view/components/DatePickerField'
-import EmailField from '../../../shared/view/components/EmailField'
-import Field from '../../../shared/view/components/Field'
-import GenderSelect from '../../../shared/view/components/GenderSelect'
-import PasswordField from '../../../shared/view/components/PasswordField'
+import CPFField from '../../../shared/components/CPFField'
+import DatePickerField from '../../../shared/components/DatePickerField'
+import EmailField from '../../../shared/components/EmailField'
+import Field from '../../../shared/components/Field'
+import GenderSelect from '../../../shared/components/GenderSelect'
+import PasswordField from '../../../shared/components/PasswordField'
 import User from '../../domain/models/user'
 import AddressForm from './AddressForm'
 import styles from './UserForm.module.sass'
@@ -13,7 +13,7 @@ interface UserFormProps {
   value: User
 }
 
-export default function UserForm({ ...props }: UserFormProps) {
+export default function UserForm(props: UserFormProps) {
   const handleChange = (field: keyof User, value: unknown) => {
     const newValue: User = {
       ...props.value,

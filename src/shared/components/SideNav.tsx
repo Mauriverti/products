@@ -1,5 +1,5 @@
 import { Drawer } from '@mui/material'
-import { routes } from '../../../Routes'
+import { routes } from '../../Routes'
 import ProductsSideNavItem from './ProductsSideNavItem'
 
 interface SideNavProps {
@@ -14,6 +14,7 @@ export default function SideNav({ ...props }: SideNavProps) {
         'width': props.isOpened ? 240 : 0,
         'height': 'calc(100vh - 50px)',
         'transition': 'width 0.3s',
+        'z-index': 9,
         '& .MuiDrawer-paper': {
           width: props.isOpened ? 240 : 0,
           position: 'absolute',

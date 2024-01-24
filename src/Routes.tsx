@@ -1,6 +1,7 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
 import App from './app/view/App'
 import Login from './login/view/pages/Login'
+import ProductCreate from './product/view/ProductCreate'
 import ProductList from './product/view/ProductList'
 import ProductView from './product/view/ProductView'
 import ProtectedRoutesProvider from './shared/contexts/ProtectedRoutes.provider'
@@ -49,6 +50,16 @@ export const router = createBrowserRouter([
               {
                 path: ':id',
                 element: <ProductView />,
+                children: [
+                  {
+                    path: 'edit',
+                    element: <ProductCreate />,
+                  },
+                ],
+              },
+              {
+                path: 'new',
+                element: <ProductCreate />,
               },
             ],
           },

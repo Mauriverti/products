@@ -2,7 +2,7 @@ import { Avatar, IconButton, Tooltip } from '@mui/material'
 import styles from './Header.module.sass'
 import MenuIcon from '@mui/icons-material/Menu'
 import PowerIcon from '@mui/icons-material/PowerSettingsNew'
-import { useProtectedRoutes } from '../../contexts/ProtectedRoutes.provider'
+import { useProtectedRoutes } from '../contexts/ProtectedRoutes.provider'
 
 export interface HeaderProps {
   onMenuClick: () => void

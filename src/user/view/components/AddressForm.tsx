@@ -1,5 +1,5 @@
-import Field from '../../../shared/view/components/Field'
-import NumberField from '../../../shared/view/components/NumberField'
+import Field from '../../../shared/components/Field'
+import NumberField from '../../../shared/components/NumberField'
 import Address from '../../domain/models/address'
 import searchAddrByZipCode from '../../domain/search-addr-by-zipCode.interactor'
 import styles from './UserForm.module.sass'
