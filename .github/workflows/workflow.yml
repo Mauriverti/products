@@ -4,19 +4,44 @@ jobs:
   validate-prettier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: npm ci && npm run prettier
+    - name: install dependencies
+      uses: actions/checkout@v4
+    - run: npm ci
+    - name: run prettier 
+      run: npm run prettier
   
   validate-eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run:
-          npm ci && npm run eslint
+    - name: install dependencies
+      uses: actions/checkout@v4
+    - run: npm ci
+    - name: run eslint 
+      run: npm run eslint
   
   validate-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run:
-          npm ci && npm run build
+    - name: install dependencies
+      uses: actions/checkout@v4
+    - run: npm ci
+    - name: run build 
+      run: npm run build
+  
+  deploy-aws:
+    runs-on: ubuntu-latest
+    steps:
+    - name: install dependencies
+      uses: actions/checkout@v4
+    - run: npm ci
+    - name: run build 
+      run: npm run build
+    - uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: arn:aws:iam::590183661185:user/test-deploy
+        aws-region: sa-east-1
+        aws-access-key-id: ${{ secrets.AWS_ACCESSS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRETS_ACCESS_KEY }}
+    - run: aws s3 sync ./build s3://mauriverti-test-products  
+      
+        
