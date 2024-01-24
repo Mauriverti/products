@@ -7,6 +7,7 @@ export interface MessageModalProps {
   title?: string
   message?: string
   onOkAction?: () => void
+  onCancelAction?: () => void
 }
 
 export default function MessageModal({ type = 'info', ...props }: MessageModalProps) {
@@ -24,7 +25,6 @@ export default function MessageModal({ type = 'info', ...props }: MessageModalPr
     default:
       modalType = styles.info
   }
-
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
@@ -35,6 +35,7 @@ export default function MessageModal({ type = 'info', ...props }: MessageModalPr
           <p>{props.message}</p>
         </div>
         <footer className={styles.actions}>
+          <Button onClick={props.onCancelAction}>Cancelar!</Button>
           <Button onClick={props.onOkAction}>OK!</Button>
         </footer>
       </div>

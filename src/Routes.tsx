@@ -1,8 +1,10 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
-import UserCreate from './user/view/pages/UserCreate'
+import App from './app/view/App'
 import Login from './login/view/pages/Login'
-import App from './app/view/pages/App'
-import ProductList from './app/view/pages/ProductList'
+import ProductList from './product/view/ProductList'
+import ProductView from './product/view/ProductView'
+import ProtectedRoutesProvider from './shared/contexts/ProtectedRoutes.provider'
+import UserCreate from './user/view/pages/UserCreate'
 
 export enum routes {
   LOGIN = '/login',
@@ -14,32 +16,41 @@ export enum routes {
 
 export const router = createBrowserRouter([
   {
-    path: '/',
-    loader: () => redirect(routes.LOGIN),
-  },
-  {
-    path: routes.LOGIN,
-    element: <Login />,
-  },
-  {
-    path: routes.USER,
+    element: <ProtectedRoutesProvider />,
     children: [
       {
-        path: 'create',
-        element: <UserCreate />,
+        path: '/',
+        loader: () => redirect(routes.LOGIN),
       },
-    ],
-  },
-  {
-    path: routes.APP,
-    element: <App />,
-    children: [
       {
-        path: 'products',
+        path: routes.LOGIN,
+        element: <Login />,
+      },
+      {
+        path: routes.USER,
         children: [
           {
-            path: 'list',
-            element: <ProductList />,
+            path: 'create',
+            element: <UserCreate />,
+          },
+        ],
+      },
+      {
+        path: routes.APP,
+        element: <App />,
+        children: [
+          {
+            path: 'products',
+            children: [
+              {
+                path: 'list',
+                element: <ProductList />,
+              },
+              {
+                path: ':id',
+                element: <ProductView />,
+              },
+            ],
           },
         ],
       },

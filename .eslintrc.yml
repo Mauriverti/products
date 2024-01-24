@@ -64,3 +64,5 @@ rules:
     - off
   no-console:
     - warn
+  import/no-named-as-default-member:
+    - off

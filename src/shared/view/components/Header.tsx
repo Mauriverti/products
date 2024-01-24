@@ -2,17 +2,16 @@ import { Avatar, IconButton, Tooltip } from '@mui/material'
 import styles from './Header.module.sass'
 import MenuIcon from '@mui/icons-material/Menu'
 import PowerIcon from '@mui/icons-material/PowerSettingsNew'
-import { useProtectedRoutes } from '../../../shared/contexts/ProtectedRoutes.provider'
+import { useProtectedRoutes } from '../../contexts/ProtectedRoutes.provider'
 
 export interface HeaderProps {
   onMenuClick: () => void
-  onLogoutClick: () => void
 }
 
-export default function Header({ ...props }: HeaderProps) {
-  const { getUser } = useProtectedRoutes()
+export default function Header(props: HeaderProps) {
+  const { user, signOut } = useProtectedRoutes()
 
-  const fullName = `${getUser()?.firstName} ${getUser()?.lastName}`
+  const fullName = `${user?.firstName} ${user?.lastName}`
 
   return (
     <div className={styles.container}>
@@ -22,10 +21,10 @@ export default function Header({ ...props }: HeaderProps) {
         </IconButton>
       </div>
       <div className={styles.container}>
-        <Avatar alt={fullName} src={getUser()?.avatar} />
+        <Avatar alt={fullName} src={user?.avatar} />
         <span>{fullName}</span>
         <Tooltip title='Sair'>
-          <IconButton aria-label='Sair' className={styles.icon} onClick={props.onLogoutClick}>
+          <IconButton aria-label='Sair' className={styles.icon} onClick={signOut}>
             <PowerIcon />
           </IconButton>
         </Tooltip>

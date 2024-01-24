@@ -1,33 +1,42 @@
-import { ReactNode, useContext, useState } from 'react'
+import { useContext, useEffect } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
+import { routes } from '../../Routes'
 import User from '../../user/domain/models/user'
+import useLocalStorage from '../domain/useStore.hook'
 import { ProtectedRoutesContext } from './ProtectedRoutes.context'
-
-interface ProtectedRoutesProviderProps {
-  children: ReactNode
-}
 
 export function useProtectedRoutes() {
   return useContext(ProtectedRoutesContext)
 }
 
-export default function ProtectedRoutesProvider({ ...props }: ProtectedRoutesProviderProps) {
-  const [user, setUser] = useState<User>()
+const storeKey = 'user'
 
-  const signIn = (_user: User) => {
-    setUser(_user)
-  }
+export default function ProtectedRoutesProvider() {
+  const navigate = useNavigate()
+  const {
+    stored: sessionUser,
+    setStored: setSessionUser,
+    removeStored: removeSessionUser,
+  } = useLocalStorage<User>(storeKey)
 
   const signOut = () => {
-    setUser(undefined)
+    removeSessionUser()
+    navigate(routes.LOGIN)
   }
 
-  const getUser = () => {
-    return user
+  const signIn = (_user: User) => {
+    setSessionUser(_user)
   }
+
+  useEffect(() => {
+    if (!sessionUser) {
+      signOut()
+    }
+  }, [])
 
   return (
-    <ProtectedRoutesContext.Provider value={{ signIn, signOut, getUser }}>
-      {props.children}
+    <ProtectedRoutesContext.Provider value={{ signIn, signOut, user: sessionUser }}>
+      <Outlet />
     </ProtectedRoutesContext.Provider>
   )
 }
