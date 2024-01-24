@@ -5,6 +5,7 @@ import file2Base64 from '../../user/domain/file2base64.converter'
 
 interface UploadButtonProps extends ButtonProps {
   handleUpload: (data: Promise<string | undefined>) => Promise<void>
+  label: string
 }
 
 export default function UploadButton(props: UploadButtonProps) {
