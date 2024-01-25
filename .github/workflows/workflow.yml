@@ -39,7 +39,7 @@ jobs:
       run: npm run build
     - uses: aws-actions/configure-aws-credentials@v4
       with:
-        role-to-assume: arn:aws:iam::590183661185:user/test-deploy
+        role-to-assume: arn:aws:iam::590183661185:role/test-deploy
         aws-region: sa-east-1
         aws-access-key-id: ${{ secrets.AWS_ACCESSS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRETS_ACCESS_KEY }}
