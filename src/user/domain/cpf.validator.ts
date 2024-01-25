@@ -1,4 +1,5 @@
-export default function CPFValidator(cpf: string) {
+export default function CPFValidator(cpf?: string) {
+  if (!cpf) return false
   let sum = 0
   let remainder
   if (cpf === '00000000000' || cpf.length !== 11) return false

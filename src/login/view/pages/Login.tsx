@@ -45,8 +45,8 @@ export default function Login() {
 
   const useFakeCredentials = () => {
     const fakeUser: iLogin = {
-      email: 'Ola92@gmail.com',
-      password: 'nFRb2uF4jGqRC6y',
+      email: 'joao@gmail.com',
+      password: 'oAKTZTzOBWIbvSU',
     }
     handleLogin(fakeUser)
   }

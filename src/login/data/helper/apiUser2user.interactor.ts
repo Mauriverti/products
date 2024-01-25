@@ -19,7 +19,7 @@ export default function apiUser2UserInteractor(apiUser: APIUser): User {
     email: apiUser.email,
     password: apiUser.senha,
     gender: apiUser.sexo,
-    birthDate: new Date(apiUser.dt_nascimento),
+    birthDate: apiUser.dt_nascimento ? new Date(apiUser.dt_nascimento) : undefined,
     token: apiUser.token,
     avatar: apiUser.image,
     address,
