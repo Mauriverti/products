@@ -1,22 +1,48 @@
 name: Test Code on commit
 on: push
+
 jobs:
   validate-prettier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: npm ci && npm run prettier
+    - name: install dependencies
+      uses: actions/checkout@v4
+    - run: npm ci
+    - name: run prettier 
+      run: npm run prettier
   
   validate-eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run:
-          npm ci && npm run eslint
+    - name: install dependencies
+      uses: actions/checkout@v4
+    - run: npm ci
+    - name: run eslint 
+      run: npm run eslint
   
   validate-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run:
-          npm ci && npm run build
+    - name: install dependencies
+      uses: actions/checkout@v4
+    - run: npm ci
+    - name: run build 
+      run: npm run build
+
+  deploy-aws:
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
+    runs-on: ubuntu-latest
+    needs: [validate-build, validate-eslint, validate-prettier]
+    steps:
+    - name: install dependencies
+      uses: actions/checkout@v4
+    - run: npm ci
+    - name: run build 
+      run: npm run build
+    - uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: arn:aws:iam::590183661185:role/github2aws-role
+        aws-region: sa-east-1
+    - run: aws s3 sync ./build s3://mauriverti-test-products  
