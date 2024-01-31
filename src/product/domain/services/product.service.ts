@@ -8,7 +8,7 @@ import Produto from '../models/produto'
 const api = 'https://6256fc506ea7037005434e84.mockapi.io/api/v1/produto'
 
 export default function useProductService() {
-  const { post } = useHTTPRepository()
+  const { post, remove } = useHTTPRepository()
 
   const validateFields = (product: Product) => {
     if (!product.name) {
@@ -48,5 +48,15 @@ export default function useProductService() {
     }
   }
 
-  return { createProduct }
+  const removeProduct = (product: Product) => {
+    try {
+      return remove(`${api}/${product.id}`)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (e: any) {
+      const message = e?.response?.data || 'Erro ao deletar produto'
+      throw Error(message)
+    }
+  }
+
+  return { createProduct, removeProduct }
 }

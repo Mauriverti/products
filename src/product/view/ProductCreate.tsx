@@ -15,17 +15,18 @@ export default function ProductCreate() {
   const { sendError } = useMessenger()
   const navigate = useNavigate()
 
+  const goBack = () => {
+    navigate('../list')
+  }
+
   const onSubmit = () => {
     try {
       createProduct(product)
+      goBack()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       sendError(`${e}`)
     }
-  }
-
-  const goBack = () => {
-    navigate('../list')
   }
 
   return (

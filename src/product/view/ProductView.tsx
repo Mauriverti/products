@@ -7,6 +7,8 @@ import { useMessenger } from '../../shared/contexts/Messenger.provider'
 import PageWrapper from '../../shared/components/PageWrapper'
 import useProductAPI from '../data/useProductAPI.hook'
 import styles from './ProductView.module.sass'
+import useProductService from '../domain/services/product.service'
+import Product from '../domain/models/product'
 
 const formatCurrency = (value?: string) => {
   if (!value) return ''
@@ -24,15 +26,25 @@ export default function ProductView() {
   const { products, loading } = useProductAPI({ id })
   const { sendWarning } = useMessenger()
   const navigate = useNavigate()
+  const { removeProduct } = useProductService()
 
   if (loading) return <CircularProgress />
 
-  const onDelete = () => {
-    sendWarning('Tem certeza que deseja deletar esse registro?')
+  const toList = () => {
+    navigate('../list')
   }
 
   const onEdit = () => {
     navigate('./edit')
+  }
+
+  const deleteProduct = (product: Product) => {
+    removeProduct(product)
+    toList()
+  }
+
+  const onDelete = () => {
+    sendWarning('Tem certeza que deseja deletar esse registro?', () => deleteProduct(products[0]))
   }
 
   return (

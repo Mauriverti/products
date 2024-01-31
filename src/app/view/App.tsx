@@ -16,7 +16,9 @@ export default function App() {
       <Header onMenuClick={toggleDrawer} />
       <div className={styles.row}>
         <SideNav isOpened={isSideNavOpened} />
-        <Outlet />
+        <div className={styles.content}>
+          <Outlet />
+        </div>
       </div>
     </div>
   )

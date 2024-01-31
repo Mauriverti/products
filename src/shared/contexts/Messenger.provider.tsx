@@ -1,6 +1,6 @@
 import { ReactNode, useContext, useState } from 'react'
 import MessageModal from '../components/MessageModal'
-import { MessengerContext, MessengerMessageType } from './Messenger.context'
+import { fn, MessengerContext, MessengerMessageType } from './Messenger.context'
 
 interface MessageProviderProps {
   children: ReactNode
@@ -35,7 +35,7 @@ export default function MessageProvider({ ...props }: MessageProviderProps) {
     setMessage(values)
   }
 
-  const sendInfo = (_message: string, callbackConfirm?: () => void, callbackCancel?: () => void) => {
+  const sendInfo = (_message: string, callbackConfirm?: fn, callbackCancel?: fn) => {
     const infoMessage: MessengerMessageType = {
       type: 'info',
       message: _message,
@@ -46,7 +46,7 @@ export default function MessageProvider({ ...props }: MessageProviderProps) {
     sendMessage(infoMessage)
   }
 
-  const sendWarning = (_message: string, callbackConfirm?: () => void, callbackCancel?: () => void) => {
+  const sendWarning = (_message: string, callbackConfirm?: fn, callbackCancel?: fn) => {
     const warningMessage: MessengerMessageType = {
       type: 'warn',
       message: _message,
@@ -57,7 +57,7 @@ export default function MessageProvider({ ...props }: MessageProviderProps) {
     sendMessage(warningMessage)
   }
 
-  const sendError = (_message: string, callbackConfirm?: () => void, callbackCancel?: () => void) => {
+  const sendError = (_message: string, callbackConfirm?: fn, callbackCancel?: fn) => {
     const errorMessage: MessengerMessageType = {
       type: 'error',
       message: _message,
@@ -68,7 +68,7 @@ export default function MessageProvider({ ...props }: MessageProviderProps) {
     sendMessage(errorMessage)
   }
 
-  const sendSuccess = (_message: string, callbackConfirm?: () => void, callbackCancel?: () => void) => {
+  const sendSuccess = (_message: string, callbackConfirm?: fn, callbackCancel?: fn) => {
     const errorMessage: MessengerMessageType = {
       type: 'success',
       message: _message,
