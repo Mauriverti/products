@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import useHTTPRepository from '../../shared/domain/api.repository'
 import Product from '../domain/models/product'
 import Produto from '../domain/models/produto'
 import product2Produto from './product2Produto.interactor'
@@ -11,13 +12,14 @@ export default function useProductAPI(filter?: Partial<Product>) {
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<unknown>()
+  const { get } = useHTTPRepository()
 
   useEffect(() => {
-    const source = axios.CancelToken.source()
+    const controller = new AbortController()
     const fetch = async () => {
       try {
         const params = product2Produto(filter)
-        const { data } = await axios.get<Produto[]>(api, { params, cancelToken: source.token })
+        const { data } = await get<Produto[]>(api, { params, signal: controller.signal })
         const parsed = data.map(produto2Product)
         setProducts(parsed)
       } catch (e) {
@@ -28,7 +30,7 @@ export default function useProductAPI(filter?: Partial<Product>) {
     }
     fetch()
     return () => {
-      source.cancel()
+      controller.abort()
     }
   }, [])
 

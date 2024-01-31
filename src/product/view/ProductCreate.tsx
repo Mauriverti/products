@@ -1,20 +1,43 @@
-import { Save } from '@mui/icons-material'
-import { Button } from '@mui/material'
+import { ArrowBack, Save } from '@mui/icons-material'
+import { Button, IconButton, Tooltip } from '@mui/material'
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import PageWrapper from '../../shared/components/PageWrapper'
+import { useMessenger } from '../../shared/contexts/Messenger.provider'
 import ProductForm from '../components/ProductForm'
 import Product from '../domain/models/product'
+import userProductService from '../domain/services/product.service'
+import styles from './ProductCreate.module.sass'
 
 export default function ProductCreate() {
-  const { id } = useParams()
   const [product, setProduct] = useState<Product>({})
+  const { createProduct } = userProductService()
+  const { sendError } = useMessenger()
+  const navigate = useNavigate()
 
-  const onSubmit = () => {}
+  const onSubmit = () => {
+    try {
+      createProduct(product)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (e: any) {
+      sendError(`${e}`)
+    }
+  }
+
+  const goBack = () => {
+    navigate('../list')
+  }
 
   return (
     <PageWrapper>
-      <p>{`id: ${id}`}</p>
+      <h3>Criar Produto</h3>
+      <div className={styles.header}>
+        <Tooltip title='Voltar'>
+          <IconButton aria-label='edit' onClick={goBack}>
+            <ArrowBack />
+          </IconButton>
+        </Tooltip>
+      </div>
       <ProductForm value={product} handleChange={setProduct} />
       <Button variant='contained' onClick={onSubmit} startIcon={<Save />}>
         Gravar

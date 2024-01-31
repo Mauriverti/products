@@ -12,7 +12,8 @@ export default function SideNav({ ...props }: SideNavProps) {
       sx={{
         'position': 'relative',
         'width': props.isOpened ? 240 : 0,
-        'height': 'calc(100vh - 50px)',
+        'height': '100%',
+        'min-height': 'calc(100vh - 50px)',
         'transition': 'width 0.3s',
         'z-index': 9,
         '& .MuiDrawer-paper': {

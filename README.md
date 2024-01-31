@@ -20,4 +20,4 @@ npm start
 
 após isso o projeto ficará disponível através do link [http://localhost:3000](http://localhost:3000)
 
-###Utilize o botão USE FAKE CREDENTIALS para utilizar um usuário padrão para fazer login
+### Se preferir, utilize o botão USE FAKE CREDENTIALS para utilizar um usuário padrão para fazer login
